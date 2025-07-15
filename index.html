@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <title>숲속 휴식처 - 산속 캠핑장</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <nav class="container">
+                <a href="#" class="logo">🏕️ 숲속 휴식처</a>
+                <ul class="nav-links">
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#features">시설안내</a></li>
+                    <li><a href="#gallery">갤러리</a></li>
+                    <li><a href="#reservation">예약</a></li>
+                    <li><a href="#contact">연락처</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home" class="hero">
+            <div class="particles"></div>
+            <div class="hero-content">
+                <h1>숲속 휴식처</h1>
+                <p>맑은 공기와 자연의 소리가 어우러진 산속 캠핑장에서 특별한 휴식을 경험하세요</p>
+                <a href="#reservation" class="cta-button">지금 예약하기</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title fade-in">시설 안내</h2>
+                <p class="section-subtitle fade-in">자연과 조화를 이룬 다양한 시설들을 만나보세요</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🏕️</div>
+                        <h3>캠핑사이트</h3>
+                        <p>넓고 평평한 부지에 전기시설이 완비된 개별 캠핑사이트를 제공합니다.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🔥</div>
+                        <h3>바베큐장</h3>
+                        <p>안전한 바베큐 시설과 테이블이 마련되어 있어 편리하게 이용하실 수 있습니다.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🚿</div>
+                        <h3>샤워실</h3>
+                        <p>깨끗하고 쾌적한 샤워실과 화장실이 24시간 이용 가능합니다.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🏔️</div>
+                        <h3>등산로</h3>
+                        <p>캠핑장 주변의 아름다운 등산로에서 트레킹을 즐기실 수 있습니다.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🌙</div>
+                        <h3>별관측</h3>
+                        <p>도시의 불빛에서 멀리 떨어진 곳에서 밤하늘의 별을 감상하세요.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🌊</div>
+                        <h3>계곡</h3>
+                        <p>맑고 차가운 계곡물에서 물놀이와 휴식을 즐기실 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title fade-in">갤러리</h2>
+                <p class="section-subtitle fade-in">숲속 휴식처의 아름다운 풍경을 미리 만나보세요</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in">캠핑사이트 전경</div>
+                    <div class="gallery-item fade-in">바베큐장</div>
+                    <div class="gallery-item fade-in">계곡 풍경</div>
+                    <div class="gallery-item fade-in">등산로 입구</div>
+                    <div class="gallery-item fade-in">별이 빛나는 밤</div>
+                    <div class="gallery-item fade-in">아침 풍경</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservation" class="reservation">
+            <div class="container">
+                <h2 class="section-title fade-in">예약하기</h2>
+                <p class="section-subtitle fade-in">자연 속에서의 특별한 시간을 예약해보세요</p>
+                
+                <div class="reservation-container">
+                    <div class="calendar-section fade-in">
+                        <h3 style="margin-bottom: 1rem; color: white;">예약 현황</h3>
+                        <div class="calendar-widget">
+                            <div class="calendar-header">
+                                <button class="calendar-nav" id="prevMonth">‹</button>
+                                <span class="calendar-month" id="currentMonth"></span>
+                                <button class="calendar-nav" id="nextMonth">›</button>
+                            </div>
+                            <div class="calendar-grid" id="calendarGrid"></div>
+                            <div class="calendar-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color legend-available"></div>
+                                    <span>예약 가능</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-reserved"></div>
+                                    <span>예약 완료</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-selected"></div>
+                                    <span>선택된 기간</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="availability-info">
+                            <h4>선택된 날짜의 사이트 현황</h4>
+                            <div class="site-availability" id="siteAvailability">
+                                <div class="site-item available">일반 사이트A<br>예약 가능</div>
+                                <div class="site-item available">일반 사이트B<br>예약 가능</div>
+                                <div class="site-item available">프리미엄 사이트<br>예약 가능</div>
+                                <div class="site-item available">패밀리 사이트<br>예약 가능</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="reservation-form fade-in" id="reservationForm">
+                        <h3 style="margin-bottom: 1rem; color: white;">예약 정보</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkin">체크인 날짜</label>
+                                <input type="date" id="checkin" name="checkin" required readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">체크아웃 날짜</label>
+                                <input type="date" id="checkout" name="checkout" required readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">인원수</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="1-2">1-2명</option>
+                                    <option value="3-4">3-4명</option>
+                                    <option value="5-6">5-6명</option>
+                                    <option value="7+">7명 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="site">사이트 유형</label>
+                                <select id="site" name="site" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="standard-a">일반 사이트A</option>
+                                    <option value="standard-b">일반 사이트B</option>
+                                    <option value="premium">프리미엄 사이트</option>
+                                    <option value="family">패밀리 사이트</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">예약자 이름</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">요청사항</label>
+                            <textarea id="message" name="message" rows="4" placeholder="특별한 요청사항이 있으시면 작성해주세요."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">예약 신청하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>연락처</h3>
+                        <p>📞 010-1234-5678</p>
+                        <p>📧 info@forestcamp.com</p>
+                        <p>📍 경기도 산속마을 123-45</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>운영시간</h3>
+                        <p>체크인: 15:00 ~ 18:00</p>
+                        <p>체크아웃: 07:00 ~ 11:00</p>
+                        <p>매주 화요일 휴무</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>이용안내</h3>
+                        <ul>
+                            <li><a href="#">예약 규정</a></li>
+                            <li><a href="#">이용 수칙</a></li>
+                            <li><a href="#">환불 정책</a></li>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p>&copy; 2024 숲속 휴식처. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // 샘플 예약 데이터 (실제 애플리케이션에서는 데이터베이스에서 가져옵니다)
+            const reservations = {
+                '2024-07-15': ['standard-a', 'premium'],
+                '2024-07-16': ['standard-a', 'premium'],
+                '2024-07-17': ['standard-a', 'premium', 'family'],
+                '2024-07-20': ['standard-b'],
+                '2024-07-21': ['standard-b', 'premium'],
+                '2024-07-25': ['family'],
+                '2024-07-26': ['family', 'standard-a'],
+                '2024-07-30': ['premium'],
+                '2024-08-01': ['standard-a', 'standard-b'],
+                '2024-08-02': ['standard-a', 'standard-b', 'premium'],
+                '2024-08-05': ['family'],
+                '2024-08-10': ['standard-a', 'premium'],
+                '2024-08-15': ['standard-a', 'standard-b', 'premium', 'family'],
+                // 테스트를 위해 2025년 예약 데이터 추가
+                '2025-08-04': ['standard-a'],
+                '2025-08-05': ['standard-a', 'standard-b', 'premium', 'family']
+            };
+
+            // 달력 기능
+            let currentDate = new Date(); // 현재 달력을 그릴 기준 날짜 (월 단위)
+            let selectedStartDate = null; // 선택된 체크인 날짜
+            let selectedEndDate = null;   // 선택된 체크아웃 날짜
+
+            const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+            const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+            // 날짜를 'YYYY-MM-DD' 형식의 문자열로 포맷
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // 특정 날짜의 모든 사이트가 예약되었는지 확인
+            function isDateReserved(date) {
+                const dateStr = formatDate(date);
+                return reservations[dateStr] && reservations[dateStr].length >= 4;
+            }
+
+            // 특정 날짜에 이용 가능한 사이트 목록 반환
+            function getAvailableSites(date) {
+                const dateStr = formatDate(date);
+                const reserved = reservations[dateStr] || [];
+                const allSites = ['standard-a', 'standard-b', 'premium', 'family'];
+                return allSites.filter(site => !reserved.includes(site));
+            }
+
+            // 달력을 업데이트하고 화면에 표시
+            function updateCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                
+                // jQuery를 사용하여 텍스트 업데이트
+                $('#currentMonth').text(`${year}년 ${monthNames[month]}`);
+                
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const startDate = new Date(firstDay);
+                startDate.setDate(startDate.getDate() - firstDay.getDay());
+                
+                const $calendarGrid = $('#calendarGrid');
+                $calendarGrid.empty(); // jQuery를 사용하여 내용 초기화
+                
+                // 요일 헤더 추가
+                dayNames.forEach(day => {
+                    // jQuery를 사용하여 요소 생성 및 클래스 추가
+                    $('<div></div>')
+                        .addClass('calendar-day-header')
+                        .text(day)
+                        .appendTo($calendarGrid); // jQuery를 사용하여 요소 추가
+                });
+                
+                // 달력 날짜 채우기
+                const today = new Date();
+                const currentDateObj = new Date(startDate);
+                
+                for (let i = 0; i < 42; i++) {
+                    const $dayElement = $('<div></div>') // jQuery로 div 생성
+                                            .addClass('calendar-day')
+                                            .text(currentDateObj.getDate());
+                    
+                    const currentDayDate = new Date(currentDateObj); // 날짜 복사본 생성
+                    
+                    if (currentDayDate.getMonth() !== month) {
+                        $dayElement.addClass('other-month');
+                    }
+                    
+                    if (currentDayDate.toDateString() === today.toDateString()) {
+                        $dayElement.addClass('today');
+                    }
+                    
+                    if (currentDayDate >= today && currentDayDate.getMonth() === month) {
+                        if (isDateReserved(currentDayDate)) {
+                            $dayElement.addClass('reserved');
+                        } else {
+                            $dayElement.on('click', () => { // jQuery를 사용하여 이벤트 리스너 추가
+                                console.log('Date clicked:', currentDayDate.toDateString());
+                                selectDate(new Date(currentDayDate));
+                            });
+                        }
+                    }
+                    
+                    // 선택된 체크인/체크아웃 범위에 속하는지 확인
+                    if (selectedStartDate && selectedEndDate) {
+                        const dayTime = currentDayDate.getTime();
+                        const startTime = selectedStartDate.getTime();
+                        const endTime = selectedEndDate.getTime();
+                        
+                        if (dayTime >= startTime && dayTime <= endTime) {
+                            $dayElement.addClass('in-range');
+                        }
+                        
+                        if (dayTime === startTime || dayTime === endTime) {
+                            $dayElement.addClass('selected');
+                        }
+                    } else if (selectedStartDate && currentDayDate.toDateString() === selectedStartDate.toDateString()) {
+                        $dayElement.addClass('selected');
+                    }
+                    
+                    $dayElement.appendTo($calendarGrid); // jQuery를 사용하여 요소 추가
+                    currentDateObj.setDate(currentDateObj.getDate() + 1);
+                }
+            }
+
+            // 날짜 선택 로직
+            function selectDate(date) {
+                if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
+                    selectedStartDate = date;
+                    selectedEndDate = null;
+                    $('#checkin').val(formatDate(date)); // jQuery로 input 값 설정
+                    $('#checkout').val(''); // jQuery로 input 값 설정
+                } else if (selectedStartDate && !selectedEndDate) {
+                    if (date > selectedStartDate) {
+                        selectedEndDate = date;
+                        $('#checkout').val(formatDate(date));
+                    } else {
+                        selectedStartDate = date;
+                        selectedEndDate = null;
+                        $('#checkin').val(formatDate(date));
+                        $('#checkout').val('');
+                    }
+                }
+                
+                updateCalendar();
+                updateSiteAvailability();
+            }
+
+            // 선택된 기간에 따른 사이트 가용성 업데이트
+            function updateSiteAvailability() {
+                const $siteAvailability = $('#siteAvailability');
+                
+                const siteNames = {
+                    'standard-a': '일반 사이트A',
+                    'standard-b': '일반 사이트B',
+                    'premium': '프리미엄 사이트',
+                    'family': '패밀리 사이트'
+                };
+
+                if (!selectedStartDate) {
+                    $siteAvailability.html(`
+                        <div class="site-item available">일반 사이트A<br>예약 가능</div>
+                        <div class="site-item available">일반 사이트B<br>예약 가능</div>
+                        <div class="site-item available">프리미엄 사이트<br>예약 가능</div>
+                        <div class="site-item available">패밀리 사이트<br>예약 가능</div>
+                    `);
+                    const $siteSelect = $('#site');
+                    $siteSelect.empty().append('<option value="">선택하세요</option>'); // jQuery로 초기화 및 옵션 추가
+                    ['standard-a', 'standard-b', 'premium', 'family'].forEach(siteType => {
+                        $('<option></option>') // jQuery로 option 생성
+                            .val(siteType)
+                            .text(siteNames[siteType])
+                            .appendTo($siteSelect);
+                    });
+                    return;
+                }
+                
+                const endDate = selectedEndDate || selectedStartDate;
+                let finalAvailableSites = [...getAvailableSites(selectedStartDate)];
+                
+                const currentCheckDate = new Date(selectedStartDate);
+                while (currentCheckDate <= endDate) {
+                    const dayAvailable = getAvailableSites(currentCheckDate);
+                    finalAvailableSites = finalAvailableSites.filter(site => dayAvailable.includes(site));
+                    currentCheckDate.setDate(currentCheckDate.getDate() + 1);
+                }
+                
+                $siteAvailability.empty(); // jQuery로 내용 초기화
+                Object.keys(siteNames).forEach(siteType => {
+                    const isAvailable = finalAvailableSites.includes(siteType);
+                    $('<div></div>') // jQuery로 div 생성
+                        .addClass(`site-item ${isAvailable ? 'available' : 'occupied'}`)
+                        .html(`${siteNames[siteType]}<br>${isAvailable ? '예약 가능' : '예약 완료'}`)
+                        .appendTo($siteAvailability);
+                });
+                
+                const $siteSelect = $('#site');
+                $siteSelect.empty().append('<option value="">선택하세요</option>'); // jQuery로 초기화 및 옵션 추가
+                
+                finalAvailableSites.forEach(siteType => {
+                    $('<option></option>')
+                        .val(siteType)
+                        .text(siteNames[siteType])
+                        .appendTo($siteSelect);
+                });
+            }
+
+            // jQuery의 document ready를 사용하여 DOM 로드 후 코드 실행
+            $(document).ready(function() {
+                // 달력 이전 달로 이동
+                $('#prevMonth').on('click', () => { // jQuery를 사용하여 이벤트 리스너 추가
+                    currentDate.setMonth(currentDate.getMonth() - 1);
+                    updateCalendar();
+                });
+
+                // 달력 다음 달로 이동
+                $('#nextMonth').on('click', () => { // jQuery를 사용하여 이벤트 리스너 추가
+                    currentDate.setMonth(currentDate.getMonth() + 1);
+                    updateCalendar();
+                });
+
+                // 페이지 로드 시 달력 및 사이트 가용성 초기화
+                updateCalendar();
+                updateSiteAvailability();
+
+                // Smooth scrolling for navigation links
+                $('a[href^="#"]').on('click', function (e) { // jQuery를 사용하여 이벤트 리스너 추가
+                    e.preventDefault();
+                    const targetId = $(this).attr('href'); // jQuery로 속성 가져오기
+                    $('html, body').animate({ // jQuery animate 사용
+                        scrollTop: $(targetId).offset().top
+                    }, 'slow'); // 스크롤 속도 설정
+                });
+
+                // Fade in animation on scroll (IntersectionObserver는 바닐라 JS가 더 효율적)
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            $(entry.target).addClass('visible'); // jQuery로 클래스 추가
+                        }
+                    });
+                }, observerOptions);
+
+                $('.fade-in').each(function() { // jQuery로 요소 순회
+                    observer.observe(this);
+                });
+
+                // Header scroll effect
+                $(window).on('scroll', () => { // jQuery로 스크롤 이벤트
+                    const $header = $('header'); // jQuery로 요소 선택
+                    if ($(window).scrollTop() > 100) { // jQuery로 스크롤 위치 가져오기
+                        $header.css({ // jQuery로 CSS 속성 설정
+                            'background': 'rgba(255, 255, 255, 0.95)',
+                            'backdropFilter': 'blur(10px)'
+                        });
+                    } else {
+                        $header.css({
+                            'background': 'rgba(255, 255, 255, 0.95)'
+                        });
+                    }
+                });
+
+                // Particles animation (이 부분은 DOM 조작이 많아 바닐라 JS가 효율적이지만, jQuery 문법으로 변환)
+                function createParticles() {
+                    const $particlesContainer = $('.particles'); // jQuery로 요소 선택
+                    
+                    for (let i = 0; i < 50; i++) {
+                        $('<div></div>') // jQuery로 div 생성
+                            .addClass('particle')
+                            .css({ // jQuery로 CSS 속성 설정
+                                'left': Math.random() * 100 + '%',
+                                'animationDelay': Math.random() * 15 + 's',
+                                'animationDuration': (Math.random() * 10 + 10) + 's'
+                            })
+                            .appendTo($particlesContainer); // jQuery로 요소 추가
+                    }
+                }
+                createParticles();
+
+                // Form submission
+                $('#reservationForm').on('submit', function(e) { // jQuery로 이벤트 리스너 추가
+                    e.preventDefault();
+                    
+                    const $form = $(this); // jQuery로 폼 요소 선택
+                    const data = {};
+                    // serializeArray()를 사용하여 폼 데이터 가져오기
+                    $form.serializeArray().forEach(item => {
+                        data[item.name] = item.value;
+                    });
+                    
+                    // 간단한 유효성 검사
+                    if (!data.checkin || !data.checkout || !data.guests || !data.site || !data.name || !data.phone || !data.email) {
+                        alert('모든 필수 항목을 입력해주세요.');
+                        return;
+                    }
+                    
+                    if (new Date(data.checkout) <= new Date(data.checkin)) {
+                        alert('체크아웃 날짜는 체크인 날짜보다 늦어야 합니다.');
+                        return;
+                    }
+                    
+                    const checkinDate = new Date(data.checkin);
+                    const checkoutDate = new Date(data.checkout);
+                    const currentDateForReservation = new Date(checkinDate);
+                    
+                    while (currentDateForReservation < checkoutDate) {
+                        const dateStr = formatDate(currentDateForReservation);
+                        if (!reservations[dateStr]) {
+                            reservations[dateStr] = [];
+                        }
+                        reservations[dateStr].push(data.site);
+                        currentDateForReservation.setDate(currentDateForReservation.getDate() + 1);
+                    }
+                    
+                    selectedStartDate = null;
+                    selectedEndDate = null;
+                    updateCalendar();
+                    updateSiteAvailability();
+                    
+                    alert('예약이 완료되었습니다! 확인 후 연락드리겠습니다.');
+                    $form[0].reset(); // jQuery 객체에서 DOM 요소에 접근하여 reset 호출
+                });
+
+                // 체크인/체크아웃 입력 필드의 최소 날짜 설정
+                const todayISO = new Date().toISOString().split('T')[0];
+                $('#checkin').attr('min', todayISO); // jQuery로 속성 설정
+                $('#checkout').attr('min', todayISO);
+
+                // 체크인 날짜 변경 시 체크아웃 날짜의 최소값 업데이트
+                $('#checkin').on('change', function() { // jQuery로 이벤트 리스너 추가
+                    const checkinDate = new Date($(this).val()); // jQuery로 input 값 가져오기
+                    checkinDate.setDate(checkinDate.getDate() + 1);
+                    $('#checkout').attr('min', checkinDate.toISOString().split('T')[0]);
+                    if ($('#checkout').val() && new Date($('#checkout').val()) < checkinDate) {
+                        $('#checkout').val('');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
